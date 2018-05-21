@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { login, logout } from './../actions';
 import Text from './Text';
 import Colors from '../styles/Colors';
+import PropTypes from 'prop-types';
 
 class TopBar extends React.Component {
     
@@ -28,8 +29,13 @@ class TopBar extends React.Component {
             </TopBarWrapper>
         );
     }
-    
 }
+
+TopBar.propTypes = {
+    loggedUser: PropTypes.bool,
+    login: PropTypes.func,
+    logout: PropTypes.func
+};
 
 const mapStateToProps = state => ({
     loggedUser: state.loggedUser
