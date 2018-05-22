@@ -2,17 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 import { connect } from 'react-redux';
-import { login, logout } from './../actions';
+import { openLoginPage, logout } from './../actions';
 import Text from './Text';
 import Colors from '../styles/Colors';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 class TopBar extends React.Component {
     
     onClick = () => {
-        const { loggedUser, login, logout } = this.props;
+        const { loggedUser, login, logout, history } = this.props;
         const onPressAction = loggedUser ? logout : login;
-        onPressAction();
+        onPressAction(history);
     };
     
     render() {
@@ -34,7 +35,8 @@ class TopBar extends React.Component {
 TopBar.propTypes = {
     loggedUser: PropTypes.bool,
     login: PropTypes.func,
-    logout: PropTypes.func
+    logout: PropTypes.func,
+    history: PropTypes.any
 };
 
 const mapStateToProps = state => ({
@@ -42,7 +44,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    login: () => dispatch(login()),
+    login: (history) => dispatch(openLoginPage(history)),
     logout: () => dispatch(logout())
 });
 
@@ -53,4 +55,4 @@ const TopBarWrapper = styled.section`
     padding: 7px;
 `;
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TopBar));
