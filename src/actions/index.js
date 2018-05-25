@@ -1,14 +1,14 @@
 import { LOGOUT } from '../actions/action_types';
 import { AUTH_LOGIN_REQUEST_SUCCESS } from './action_types';
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
 
 const simulateDelayedDispatch = (dispatch) => {
-  return new Promise((resolve, reject) => {
-      setTimeout(() => {
-          dispatch(loggedIn());
-          resolve();
-      }, 1500);
-  })
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            dispatch(loggedIn());
+            resolve();
+        }, 1500);
+    });
 };
 
 
