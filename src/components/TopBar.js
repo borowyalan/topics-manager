@@ -6,14 +6,13 @@ import { openLoginPage, logout } from './../actions';
 import Text from './Text';
 import Colors from '../styles/Colors';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 
 class TopBar extends React.Component {
     
     onClick = () => {
-        const { loggedUser, login, logout, history } = this.props;
-        const onPressAction = loggedUser ? logout : login;
-        onPressAction(history);
+        const { loggedUser, openLoginPage, logout } = this.props;
+        const onPressAction = loggedUser ? logout : openLoginPage;
+        onPressAction();
     };
     
     render() {
@@ -44,7 +43,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    login: (history) => dispatch(openLoginPage(history)),
+    openLoginPage: () => dispatch(openLoginPage()),
     logout: () => dispatch(logout())
 });
 
@@ -55,4 +54,4 @@ const TopBarWrapper = styled.section`
     padding: 7px;
 `;
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TopBar));
+export default connect(mapStateToProps, mapDispatchToProps)(TopBar);

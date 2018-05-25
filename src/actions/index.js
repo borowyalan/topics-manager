@@ -1,13 +1,26 @@
 import { LOGOUT } from '../actions/action_types';
 import { AUTH_LOGIN_REQUEST_SUCCESS } from './action_types';
+import { push } from 'react-router-redux'
 
-export const openLoginPage = (history) => {
-    return function(dispatch) {
-        history.push('/projects');
-        setTimeout(() => {
-            //pretend we were logging in...
-            dispatch(loggedIn());
-        }, 1500);
+const simulateDelayedDispatch = (dispatch) => {
+  return new Promise((resolve, reject) => {
+      setTimeout(() => {
+          dispatch(loggedIn());
+          resolve();
+      }, 1500);
+  })
+};
+
+
+//TODDO get back to state w/o react-router-redux
+//fine to use mount()...
+
+
+export const openLoginPage = () => {
+    return (dispatch) => {
+        //push(`/projects`);
+        //simulateDelayedDispatch(dispatch);
+        
     };
 };
 

@@ -70,3 +70,9 @@
 
 5. PastWorkshops
     - Same components
+
+
+### to be discussed
+
+using `import { withRouter } from 'react-router-dom';` makes component hardly testable. We cannot use `shallow` due to deep composition. We can use `render` but it will produce html, not React.Component... finally, using `mount` renders so much irrelevant content that is makes no sense to even compare snapshots.
+it might be ok to just make "HOC" component which handle dispatching actions but... sounds like a hax
