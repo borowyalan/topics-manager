@@ -16,6 +16,10 @@ TrainersList.propTypes = {
     trainers: PropTypes.arrayOf(PropTypes.instanceOf(UserModel)).isRequired
 };
 
+TrainersList.defaultProps = {
+    trainers: []
+};
+
 const StyledTrainersList = styled.figure`
     flex: 1;
     padding: 0 2em;
