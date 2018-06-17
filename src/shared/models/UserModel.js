@@ -3,6 +3,7 @@ export class UserModel {
     name;
     nickname;
 
+    
     static fromBackend(userData) {
         return Object.assign(new UserModel(), {
             email: userData.email,
