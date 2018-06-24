@@ -6,11 +6,11 @@ import Participants from './Participants';
 import PropTypes from 'prop-types';
 import TopicModel from '../../shared/models/TopicModel';
 
-const Topic = props => (
+const Topic = ({topic}) => (
     <RowWrapper>
-        <TopicDescription/>
-        <TrainersList trainers={props.topic.trainers}/>
-        <Participants likes={props.topic.likes}/>
+        <TopicDescription title={topic.title} description={topic.describe}/>
+        <TrainersList trainers={topic.trainers}/>
+        <Participants/>
     </RowWrapper>
 );
 

@@ -6,6 +6,7 @@ import Header from './components/Header';
 import TopicContainer from './topic/TopicContainer';
 
 import AuthCallbackContainer from './shared/components/AuthCallbackContainer';
+import Database from './shared/components/Database';
 
 class App extends Component {
     render() {
@@ -18,6 +19,7 @@ class App extends Component {
                     <TopicContainer />
                 </main>
                 <AuthCallbackContainer/>
+                <Database/>
             </React.Fragment>
         );
     }

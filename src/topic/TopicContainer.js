@@ -11,7 +11,7 @@ import Section from '../components/Section';
 class TopicContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getTopics();
+        //this.props.getTopics();
     }
 
     render() {
