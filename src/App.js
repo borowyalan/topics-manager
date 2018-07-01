@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { injectGlobal } from 'styled-components';
 import TopBar from './components/TopBar';
-import WorkshopForm from './components/WorkshopForm';
 import Header from './components/Header';
 import TopicContainer from './topic/TopicContainer';
 
 import AuthCallbackContainer from './shared/components/AuthCallbackContainer';
 import Database from './shared/components/Database';
+import WorkshopContainer from './submit/WorkshopContainer';
 
 class App extends Component {
     render() {
@@ -15,7 +15,7 @@ class App extends Component {
                 <TopBar />
                 <Header />
                 <main>
-                    <WorkshopForm />
+                    <WorkshopContainer/>
                     <TopicContainer />
                 </main>
                 <AuthCallbackContainer/>

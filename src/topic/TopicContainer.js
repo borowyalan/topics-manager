@@ -6,14 +6,7 @@ import { connect } from 'react-redux';
 import TopicModel from '../shared/models/TopicModel';
 import Section from '../components/Section';
 
-
-// tests for actions & thunk's dispatching
 class TopicContainer extends React.Component {
-
-    componentDidMount() {
-        //this.props.getTopics();
-    }
-
     render() {
         const { topics, pending, error } = this.props;
         return (

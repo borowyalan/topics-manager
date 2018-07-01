@@ -14,28 +14,28 @@ export default class TopicService {
         TopicModel.fromBackendData(
             {
                 title: 'React Basic',
-                describe: 'Lorem ipsum',
+                description: 'Lorem ipsum',
                 trainers: TopicService.people,
                 members: TopicService.people,
                 likes: 10,
             }),
         TopicModel.fromBackendData({
             title: 'React Native Basic',
-            describe: 'Lorem ipsum',
+            description: 'Lorem ipsum',
             trainers: TopicService.people,
             members: TopicService.people,
             likes: 39,
         }),
         TopicModel.fromBackendData({
             title: 'React + Redux',
-            describe: 'Lorem ipsum',
+            description: 'Lorem ipsum',
             trainers: TopicService.people,
             members: TopicService.people,
             likes: 13,
         }),
         TopicModel.fromBackendData({
             title: 'React + Redux + Thunk',
-            describe: 'Lorem ipsum',
+            description: 'Lorem ipsum',
             trainers: TopicService.people,
             members: TopicService.people,
             likes: 0,
@@ -50,8 +50,11 @@ export default class TopicService {
         return this.topics;
     }
 
-    static async submitTopic(topic) {
-        this.topics.push(topic);
-        return topic;
+    static submitTopic(topic) {
+        // eslint-disable-next-line no-undef
+        const db = firebase.database();
+        const newTopicKey = db.ref().child('topics').push().key;
+        //temp; uncomment to push something to realtime database
+        db.ref('topics/' + newTopicKey).set(topic);
     }
 }

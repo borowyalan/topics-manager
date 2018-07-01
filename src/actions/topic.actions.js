@@ -1,5 +1,5 @@
-import { TOPICS_GET_REQUEST_SUCCESS, TOPICS_GET_REQUEST } from '../actions/action_types';
-import { TOPICS_GET_REQUEST_ERROR } from './action_types';
+import {TOPICS_GET_REQUEST_SUCCESS, TOPICS_GET_REQUEST, TOPICS_SUBMIT_REQUEST} from '../actions/action_types';
+import {TOPICS_GET_REQUEST_ERROR, TOPICS_SUBMIT_REQUEST_SUCCESS} from './action_types';
 import TopicService from '../shared/services/TopicService';
 
 export const getTopics = () => {
@@ -30,5 +30,20 @@ export const topicsFetchError = (error) => {
     return {
         type: TOPICS_GET_REQUEST_ERROR,
         payload: error
+    };
+};
+
+export const topicSubmitted = () => ({
+    type: TOPICS_SUBMIT_REQUEST_SUCCESS
+});
+
+export const submitTopic = (topic) => {
+    return function(dispatch){
+        dispatch({
+            type: TOPICS_SUBMIT_REQUEST,
+            payload: topic
+        });
+        TopicService.submitTopic(topic);
+        dispatch(topicSubmitted());
     };
 };

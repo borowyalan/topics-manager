@@ -1,25 +1,14 @@
 import React from 'react';
-import TopicModel from '../models/TopicModel';
 import PropTypes from 'prop-types';
+import TopicModel from '../models/TopicModel';
 import {connect} from 'react-redux';
-import {getTopics, topicsFetched} from '../../actions/topic.actions';
+import {topicsFetched} from '../../actions/topic.actions';
 
-class Database extends React.Component{
-    componentWillMount() {
-    // eslint-disable-next-line no-undef
+class Database extends React.Component {
+    componentDidMount() {
+        // eslint-disable-next-line no-undef
         const db = firebase.database();
         const refA = db.ref('topics');
-
-
-
-        var newTopicKey = db.ref().child('topics').push().key;
-        //temp; uncomment to push something to realtime database
-        /*
-        db.ref('topics/' + newTopicKey).set({
-            title: 'Awesome WarsawJS Workshop',
-            describe: 'Some Supah Title!'
-        });
-        */
 
         refA.on('value', (snapshot) => {
             const topics = Object.entries(snapshot.val()).map((el) => TopicModel.fromBackendData({
@@ -27,15 +16,17 @@ class Database extends React.Component{
                 ...el[1]    //so append all 'value's props directly there
             }));
             this.props.topicsFetched(topics);
-            //topicsFetched(topics);
-        })
-        console.log("works awesome! try adding something directly within firebase dashboard... it will be updated there automagically! :)");
+        });
     }
 
     render() {
         return <div/>;
     }
 }
+
+Database.propTypes = {
+    topicsFetched: PropTypes.func.isRequired
+};
 
 const mapDispatchToProps = dispatch => ({
     topicsFetched: (topics) => dispatch(topicsFetched(topics))

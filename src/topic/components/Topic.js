@@ -8,7 +8,7 @@ import TopicModel from '../../shared/models/TopicModel';
 
 const Topic = ({topic}) => (
     <RowWrapper>
-        <TopicDescription title={topic.title} description={topic.describe}/>
+        <TopicDescription title={topic.title} description={topic.description}/>
         <TrainersList trainers={topic.trainers}/>
         <Participants/>
     </RowWrapper>
