@@ -6,6 +6,7 @@ export default class TopicModel {
     likes;
     trainers;
     members;
+    author;//GithubUserModel
 
     static fromBackendData(backendData) {
         const topic = Object.assign(new TopicModel(), backendData);

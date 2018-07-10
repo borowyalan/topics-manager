@@ -7,6 +7,7 @@ import Colors from '../styles/Colors';
 import Section from './Section';
 
 import TopicModel from '../shared/models/TopicModel';
+import {GithubUserModel} from '../shared/models/GithubUserModel';
 
 class WorkshopForm extends React.Component {
 
@@ -22,20 +23,19 @@ class WorkshopForm extends React.Component {
     };
 
     render() {
-        const {onClick} = this.props;
+        const {onClick, author} = this.props;
         const {title, description} = this.state;
 
         return (
             <Section background={Colors.yellow}>
                 <Text type="secondary">Zgłoś propozycję warsztatów</Text>
                 <Textarea placeholder="Temat" value={title} onChange={(e) => this._onChange('title', e)}/>
-                <Textarea placeholder="Opis" value={description} height="200px"
-                    onChange={(e) => this._onChange('description', e)}/>
+                <Textarea placeholder="Opis" value={description} height="200px" onChange={(e) => this._onChange('description', e)}/>
                 <Button type="primary" onClick={() => {
                     onClick(TopicModel.fromBackendData({
                         title,
                         description
-                    }));
+                    }), author);
                 }}>Wyślij</Button>
             </Section>
 
@@ -54,7 +54,8 @@ const Textarea = styled.textarea`
 `;
 
 WorkshopForm.propTypes = {
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    author: PropTypes.instanceOf(GithubUserModel).isRequired
 };
 
 export default WorkshopForm;

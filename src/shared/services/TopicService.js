@@ -50,11 +50,13 @@ export default class TopicService {
         return this.topics;
     }
 
-    static submitTopic(topic) {
+    static submitTopic(topic, author) {
         // eslint-disable-next-line no-undef
         const db = firebase.database();
         const newTopicKey = db.ref().child('topics').push().key;
         //temp; uncomment to push something to realtime database
-        db.ref('topics/' + newTopicKey).set(topic);
+        db.ref('topics/' + newTopicKey).set({
+            ...topic, author: author.strip(), trainers: [], users: []
+        });
     }
 }

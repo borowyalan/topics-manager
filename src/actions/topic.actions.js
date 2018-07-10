@@ -37,13 +37,16 @@ export const topicSubmitted = () => ({
     type: TOPICS_SUBMIT_REQUEST_SUCCESS
 });
 
-export const submitTopic = (topic) => {
+export const submitTopic = (topic, author) => {
     return function(dispatch){
         dispatch({
             type: TOPICS_SUBMIT_REQUEST,
-            payload: topic
+            payload: {
+                topic,
+                author
+            }
         });
-        TopicService.submitTopic(topic);
+        TopicService.submitTopic(topic, author);
         dispatch(topicSubmitted());
     };
 };
