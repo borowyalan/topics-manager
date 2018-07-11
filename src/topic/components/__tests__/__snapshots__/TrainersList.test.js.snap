@@ -26,6 +26,7 @@ exports[`<TrainersList> when trainers are provided should match snapshot 1`] = `
         "email": undefined,
         "name": undefined,
         "nickname": undefined,
+        "picture": undefined,
       }
     }
   />
@@ -36,6 +37,7 @@ exports[`<TrainersList> when trainers are provided should match snapshot 1`] = `
         "email": undefined,
         "name": undefined,
         "nickname": undefined,
+        "picture": undefined,
       }
     }
   />
