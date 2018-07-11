@@ -8,6 +8,17 @@ exports[`<TrainersList> should render 1`] = `
   >
     Trenerzy
   </Text>
+  <Trainer
+    important={true}
+    trainer={
+      UserModel {
+        "email": undefined,
+        "name": undefined,
+        "nickname": undefined,
+        "picture": undefined,
+      }
+    }
+  />
 </styled.figure>
 `;
 
@@ -19,6 +30,17 @@ exports[`<TrainersList> when trainers are provided should match snapshot 1`] = `
   >
     Trenerzy
   </Text>
+  <Trainer
+    important={true}
+    trainer={
+      UserModel {
+        "email": undefined,
+        "name": undefined,
+        "nickname": undefined,
+        "picture": undefined,
+      }
+    }
+  />
   <Trainer
     key="0"
     trainer={

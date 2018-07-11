@@ -20,7 +20,7 @@ TrainersList.propTypes = {
 
 TrainersList.defaultProps = {
     trainers: [],
-    author: {}
+    author: UserModel.fromBackend({})
 };
 
 const StyledTrainersList = styled.figure`
