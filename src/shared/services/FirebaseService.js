@@ -1,8 +1,20 @@
 import {EventEmitter} from 'fbemitter';
 import TopicModel from '../models/TopicModel';
+import firebase from 'firebase';
+import 'firebase/database';
+
+const config = {
+    apiKey: 'AIzaSyC0LpDu_Vi8gHMmjGR2gAUH-aQNy1bIEDI',
+    authDomain: 'topics-manager-a013b.firebaseapp.com',
+    databaseURL: 'https://topics-manager-a013b.firebaseio.com',
+    projectId: 'topics-manager-a013b',
+    storageBucket: '',
+    messagingSenderId: '198055151161'
+};
 
 // eslint-disable-next-line no-undef
-const db = firebase.database();
+const app = firebase.initializeApp(config);
+const db = app.database();
 const refA = db.ref('topics');
 
 const TOPIC_ADDED_EVENT = 'topic-added';
