@@ -1,4 +1,4 @@
-import {EventEmitter} from 'fbemitter';
+import { EventEmitter } from 'fbemitter';
 import TopicModel from '../models/TopicModel';
 import firebase from 'firebase';
 import 'firebase/database';
@@ -9,7 +9,7 @@ const config = {
     databaseURL: 'https://topics-manager-a013b.firebaseio.com',
     projectId: 'topics-manager-a013b',
     storageBucket: '',
-    messagingSenderId: '198055151161'
+    messagingSenderId: '198055151161',
 };
 
 // eslint-disable-next-line no-undef
@@ -23,15 +23,16 @@ export default class FirebaseService {
     static emitter = new EventEmitter();
     static listening = false;
 
-
     static listenOnTopicAdded(callback) {
         if (!this.listening) {
             this.listening = true;
-            refA.on('value', (snapshot) => {
-                const topics = Object.entries(snapshot.val()).map((el) => TopicModel.fromBackendData({
-                    id: el[0],  //Object.entries returns obj like { '0': key, '1': value }
-                    ...el[1]    //so append all 'value's props directly there
-                }));
+            refA.on('value', snapshot => {
+                const topics = Object.entries(snapshot.val()).map(el =>
+                    TopicModel.fromBackendData({
+                        id: el[0], //Object.entries returns obj like { '0': key, '1': value }
+                        ...el[1], //so append all 'value's props directly there
+                    })
+                );
                 this.emitter.emit(TOPIC_ADDED_EVENT, topics);
             });
         }
@@ -43,3 +44,5 @@ export default class FirebaseService {
         this.emitter.removeAllListeners();
     }
 }
+
+export { db };
