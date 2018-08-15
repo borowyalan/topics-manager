@@ -5,7 +5,6 @@ import {UserModel} from '../shared/models/UserModel';
 const Trainer = ({trainer, important}) => (
     <div style={important ? {backgroundColor: 'yellow'} : {}}>
         <p>{trainer.name}</p>
-        <p>{trainer.email}</p>
     </div>
 );
 

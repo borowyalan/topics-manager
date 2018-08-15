@@ -10,6 +10,7 @@ const TrainersList = ({trainers, author}) => (
         <Text type="secondary" margin="0 0 0.5em 0">Trenerzy</Text>
         <Trainer trainer={author} important/>
         {trainers.map((trainer, index) => <Trainer key={index} trainer={trainer}/>)}
+        <button onClick={() => {}}>Chcę być trenerem</button>
     </StyledTrainersList>
 );
 

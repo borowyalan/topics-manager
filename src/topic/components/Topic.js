@@ -10,9 +10,7 @@ const Topic = ({topic}) => (
     <RowWrapper>
         <TopicDescription title={topic.title} description={topic.description}/>
         <TrainersList trainers={topic.trainers} author={topic.author}/>
-        <button onClick={() => {}}>Chcę być trenerem</button>
-        <button onClick={() => {}}>Chcę być uczestnikiem</button>
-        <Participants/>
+        <Participants topic={topic}/>
     </RowWrapper>
 );
 

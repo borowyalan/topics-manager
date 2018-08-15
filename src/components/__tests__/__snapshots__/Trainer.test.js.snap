@@ -7,8 +7,5 @@ exports[`<Trainer> component should render 1`] = `
   <p>
     John Doe
   </p>
-  <p>
-    john@doe.com
-  </p>
 </div>
 `;
